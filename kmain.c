@@ -4,6 +4,7 @@
 
 extern void kmain(void)
 {
-	printk("UwU");
+	fb_clear();
+	printk("UwUabc");
 	return;
 }

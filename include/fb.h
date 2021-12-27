@@ -3,7 +3,8 @@
 
 #include <stddef.h>
 
-#define FB_BLACK 0
+
+#define FB_WHITE 0
 #define FB_BLUE 1
 #define FB_GREEN 2
 #define FB_CYAN 3
@@ -18,7 +19,8 @@
 #define FB_LIGHT_RED 12
 #define FB_LIGHT_MAGENTA 13
 #define FB_LIGHT_BROWN 14
-#define FB_WHITE 15
+#define FB_BLACK 15
+
 
 #define FB_COMMAND_PORT 0x3d4
 #define FB_DATA_PORT 0x3d5
@@ -36,6 +38,8 @@ extern size_t fb_cursor;*/
 void fb_write_cell(unsigned int, char, unsigned char, unsigned char);
 
 void fb_move_cursor(unsigned short);
+
+void fb_clear(void);
 
 int write(char*, size_t);
 

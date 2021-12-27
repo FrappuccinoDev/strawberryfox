@@ -1,31 +1,29 @@
 global strawberryloader
 
 MAGIC_NUMBER equ 0x1badb002
-FLAGS equ 0x0
-CHECKSUM equ -MAGIC_NUMBER
-KERNEL_STACK_SIZE equ 4096
+FLAGS equ (1 << 0) | (1 << 1)
+CHECKSUM equ -(MAGIC_NUMBER + FLAGS)
+KERNEL_STACK_SIZE equ 16384
 
 section .multiboot
 align 4
 header_start:
-	dd 0x1badb002
-	dd (1 << 0) | (1 << 1)
-	dd -(0x1badb002 + ((1 << 0) | (1 << 1)))
+;	dd 0x1badb002
+;	dd (1 << 0) | (1 << 1)
+;	dd -(0x1badb002 + ((1 << 0) | (1 << 1)))
+	dd MAGIC_NUMBER
+	dd FLAGS
+	dd CHECKSUM
 header_end:
 
 section .bss
-
-align 4
+align 16
 kernel_stack:
 	resb KERNEL_STACK_SIZE
 stack_top:
 
 section .text
-
 align 4
-	dd MAGIC_NUMBER
-	dd FLAGS
-	dd CHECKSUM
 
 strawberryloader:
 	cli

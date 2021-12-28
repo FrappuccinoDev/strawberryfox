@@ -2,7 +2,7 @@ OBJECTS = boot.o io.o kmain.o printk.o fb/fb.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -fno-builtin -fno-stack-protector \
 	 -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c \
-	 -I$(PWD)/include
+	 -I$(PWD)/include -g
 
 LDFLAGS = -T link.ld -melf_i386
 
